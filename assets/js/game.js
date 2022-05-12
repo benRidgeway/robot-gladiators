@@ -1,34 +1,4 @@
-var playerInfo = {
-  name: window.prompt("What is your robot's name?"),
-  health: 100,
-  attack: 10,
-  money: 10,
-  reset: function() {
-    this.health = 100;
-    this.money = 10;
-    this.attack = 10;
-  }, // comma!
-  refillHealth: function() {
-    if (this.money >= 7) {
-      window.alert("Refilling player's health by 20 for 7 dollars.");
-      this.health += 20;
-      this.money -= 7;
-    } 
-    else {
-      window.alert("You don't have enough money!");
-    }
-  },
-  upgradeAttack: function() {
-    if (this.money >= 7) {
-      window.alert("Upgrading player's attack by 6 for 7 dollars.");
-      this.attack += 6;
-      this.money -= 7;
-    } 
-    else {
-      window.alert("You don't have enough money!");
-    }
-  }
-}
+
 
 
 
@@ -98,7 +68,7 @@ var fight = function(enemy) {
   return value;
 };
 // You can also log multiple values at once like this
-console.log(playerInfo.name, playerInfo.attack, playerInfo.health);
+
 
 var enemyInfo = [
   {
@@ -122,7 +92,7 @@ playerInfo.reset();
   for (var i = 0; i < enemyInfo.length; i++) {
     if (playerInfo.health > 0) {
       window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
-
+      
       var pickedEnemyObj = enemyInfo[i];
 
       pickedEnemyObj.health = randomNumber(40, 60);
@@ -201,9 +171,51 @@ var shop = function() {
       break;
   }
 };
+  // function to set name
+var getPlayerName = function() {
+  var name = "";
 
-    
+  while (name === "" || name === null) {
+    name = prompt("What is your robot's name?");
+  }
 
+  console.log("Your robot's name is " + name);
+  return name;
+}
+
+var playerInfo = {
+  name: getPlayerName(),
+  health: 100,
+  attack: 10,
+  money: 10,
+
+  reset: function() {
+    this.health = 100;
+    this.money = 10;
+    this.attack = 10;
+  }, // comma!
+  refillHealth: function() {
+    if (this.money >= 7) {
+      window.alert("Refilling player's health by 20 for 7 dollars.");
+      this.health += 20;
+      this.money -= 7;
+    } 
+    else {
+      window.alert("You don't have enough money!");
+    }
+  },
+  upgradeAttack: function() {
+    if (this.money >= 7) {
+      window.alert("Upgrading player's attack by 6 for 7 dollars.");
+      this.attack += 6;
+      this.money -= 7;
+    } 
+    else {
+      window.alert("You don't have enough money!");
+    }
+  }
+}    
+console.log(playerInfo.name, playerInfo.attack, playerInfo.health);
 
 // start the game when the page loads
 startGame();
